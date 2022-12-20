@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+    {% if active %}
+        <h2>Active Listings</h2>
+    {% else %}
+        <h2>Closed Listings</h2>
+    {% endif %}
+    {% for listing in Listings %}
+        <a href="{% url "listing" listing.id %}" id = "link_listings">
+            <div id = "listing">
+                <div id = "image">
+                    <img src="{{ listing.comment.image }}" alt="{{listing.post_name}}" id = "listing_img">
+                </div>
+                <div id = "description">
+                    <h3>{{ listing.post_name }}</h3>
+                    <h4>Price: {{ listing.price }}</h4>
+                    <p>Created by: qyssss</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+
+{% endblock %}
